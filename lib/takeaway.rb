@@ -16,7 +16,7 @@ class Takeaway
 
   def order(item, quantity = 1)
     item = item.capitalize
-    fail item_error unless in_menu?(item)
+    fail item_error unless menu.in_menu?(item)
     @basket.store(item, quantity)
     confirm(item, quantity)
   end
@@ -24,21 +24,18 @@ class Takeaway
   def total
     total = 0
     basket.each do |key, value|
-      total += (value * menu.read[key])
+      total += (value * menu.find_price(key))
     end
     total
   end
 
   def place_order(message = TextMessage.new)
-    message.message(confirmation)
+    message.send_message(confirmation)
     basket = {}
   end
 
   private
 
-  def in_menu?(item)
-    menu.read.key?(item)
-  end
 
   def confirm(item, quantity)
     "#{quantity} #{item} has been added to your basket"

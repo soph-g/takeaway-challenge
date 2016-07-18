@@ -3,7 +3,7 @@ require 'takeaway'
 describe Takeaway do
   subject(:takeaway) { described_class.new }
   let(:menu) { double(:menu) }
-  let(:message) { double(:message) }
+  let(:text_message) { double(:text_message) }
 
 
   describe '#show_menu' do
@@ -52,8 +52,8 @@ describe Takeaway do
       takeaway.order("Pancakes", 2)
     end
     it 'sends a text message confirming the order' do
-      expect(message).to(receive(:send_message))
-      takeaway.place_order(message)
+      expect(text_message).to(receive(:send_message))
+      takeaway.place_order(text_message)
     end
   end
 

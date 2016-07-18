@@ -20,4 +20,10 @@ describe Menu do
     end
   end
 
+  describe '#find_price' do
+    it 'finds the price of an item' do
+      expect(menu.find_price("Omlette")).to(eq(6))
+    end
+  end
+
 end

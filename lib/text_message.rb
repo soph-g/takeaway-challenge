@@ -4,12 +4,6 @@ Dotenv.load
 
 class TextMessage
 
-  def message(confirmation)
-    send_message(confirmation)
-  end
-
-  private
-
   def send_message(confirmation)
     (account_sid = ENV['TWILIO_ACCOUNT_SID'])
     (auth_token = ENV['TWILIO_AUTH_TOKEN'])

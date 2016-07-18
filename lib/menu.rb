@@ -11,10 +11,6 @@
               "Smoothie" => 3}
    end
 
-   def read
-     menu
-   end
-
    def print_menu
      menu.each do |item, key|
        print item.ljust(20)
@@ -22,4 +18,11 @@
      end
    end
 
+   def in_menu?(item)
+     menu.key?(item)
+   end
+
+   def find_price(key)
+     menu[key]
+   end
  end
